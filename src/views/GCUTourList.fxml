@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="views.GCUTourListController">
+    <children>
+        <TableView fx:id="tourTable">
+            <columns>
+                <TableColumn fx:id="tourIdColumn" text="Tour ID" />
+                <TableColumn fx:id="tourDateColumn" text="Tour Date" />
+                <TableColumn fx:id="tourDurationColumn" text="Tour Duration (Days)" />
+            </columns>
+        </TableView>
+        <Button text="Add Tour" onAction="#handleAddTour" />
+    </children>
+</AnchorPane>

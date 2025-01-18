@@ -49,7 +49,16 @@ public class Controller {
     }
 
     public void listGCUTours() {
-
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(GCUToursApp.class.getResource("/views/GCUTourList.fxml"));
+            BorderPane tourListView = loader.load();
+    
+            // Set the new scene
+            primaryStage.setScene(new Scene(tourListView));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addGCUTourForm() {

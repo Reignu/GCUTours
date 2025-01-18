@@ -1,0 +1,7 @@
+{
+  "java.jdt.ls.java.home": "/Library/Java/JavaVirtualMachines/jdk-23.jdk/Contents/Home",
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/jiangqinyan/Desktop/admin/code/javafx-sdk-23.0.1/lib/**/*.jar"
+  ]
+}
