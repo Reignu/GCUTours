@@ -52,7 +52,7 @@ public class Controller {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(GCUToursApp.class.getResource("/views/GCUTourList.fxml"));
-            BorderPane tourListView = loader.load();
+            AnchorPane tourListView = loader.load(); // Load the FXML
     
             // Set the new scene
             primaryStage.setScene(new Scene(tourListView));

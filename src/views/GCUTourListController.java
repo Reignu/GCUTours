@@ -3,7 +3,6 @@ package views;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Button;
 import model.GCUTour;
 import daos.SQLDAO; // Assuming you have a DAO class to interact with the database
 import javafx.collections.FXCollections;
@@ -32,7 +31,7 @@ public class GCUTourListController {
         // Set up the table columns
         tourIdColumn.setCellValueFactory(cellData -> cellData.getValue().gcuTourIdProperty().asObject());
         tourDateColumn.setCellValueFactory(cellData -> cellData.getValue().tourDateProperty());
-        tourDurationColumn.setCellValueFactory(cellData -> cellData.getValue().tourDurationProperty());
+        tourDurationColumn.setCellValueFactory(cellData -> cellData.getValue().tourDurationProperty().asObject());
 
         // Load the tour data
         loadTourData();
@@ -40,7 +39,7 @@ public class GCUTourListController {
 
     private void loadTourData() {
         // Fetch data from the database and populate the tourList
-        // Example: tourList.addAll(sqlDao.getAllGCUTours());
+        tourList.addAll(sqlDao.getGCUTours()); // Fetch data from the DAO
         tourTable.setItems(tourList); // Set the items in the table
     }
 

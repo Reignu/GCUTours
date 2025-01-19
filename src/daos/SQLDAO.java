@@ -1,14 +1,14 @@
 package daos;
 
-import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import model.GCUTour;
 import model.Destination;
+import model.GCUTour;
 
 /**
  * A SQL Data Access Object class
@@ -45,12 +45,12 @@ public class SQLDAO extends DAO {
             while (rs.next()) {
                 int GCUTourId = rs.getInt("GCUTOURID");
                 String tourDate = rs.getString("TOURDATE");
-                String tourDuration = rs.getString("TOURDURATION");
-                List<Destination> placesVisitedList = getGCUTourPlaces(GCUTourId);
-                GCUTour GCUTour = new GCUTour(GCUTourId, tourDate, Integer.parseInt(tourDuration), placesVisitedList);
-                GCUToursList.add(GCUTour);
-            }            
-        } catch (SQLException ex) { System.out.println(ex.getMessage());}
+                int tourDuration = rs.getInt("TOURDURATION");
+                GCUToursList.add(new GCUTour(GCUTourId, tourDate, tourDuration));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         return GCUToursList;
     }
 

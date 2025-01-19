@@ -3,93 +3,99 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Models GCUTour entities
  *
  * @author Reignu
  */
 public class GCUTour {
-    private int id;
-    private String tourDate;
-    private int tourDuration;
+    private IntegerProperty id;
+    private StringProperty tourDate;
+    private IntegerProperty tourDuration;
     private List<Destination> destinationsVisited;
 
-    /**
-     * The default GCUTour constructor
-     */
     public GCUTour() {
+        this.id = new SimpleIntegerProperty();
+        this.tourDate = new SimpleStringProperty();
+        this.tourDuration = new SimpleIntegerProperty();
         this.destinationsVisited = new ArrayList<>();
     }
 
-    /**
-     * A constructor which accepts tour date & tour duration values
-     */
     public GCUTour(String tourDate, int tourDuration) {
-        this.tourDate = tourDate;
-        this.tourDuration = tourDuration;
-        this.destinationsVisited = new ArrayList<>();
+        this();
+        this.tourDate.set(tourDate);
+        this.tourDuration.set(tourDuration);
     }
 
-    /**
-     * A constructor which accepts id, tour date & tour duration values
-     */
     public GCUTour(int id, String tourDate, int tourDuration) {
-        this.id = id;
-        this.tourDate = tourDate;
-        this.tourDuration = tourDuration;
-        this.destinationsVisited = new ArrayList<>();
+        this();
+        this.id.set(id);
+        this.tourDate.set(tourDate);
+        this.tourDuration.set(tourDuration);
     }
 
-    /**
-     * A constructor which accepts id, tour date & tour duration and places visited values
-     */
     public GCUTour(int id, String tourDate, int tourDuration, List<Destination> destinationsVisited) {
-        this.id = id;
-        this.tourDate = tourDate;
-        this.tourDuration = tourDuration;
+        this(id, tourDate, tourDuration);
         this.destinationsVisited = destinationsVisited;
+    }
+
+    public IntegerProperty gcuTourIdProperty() {
+        return id;
+    }
+
+    public StringProperty tourDateProperty() {
+        return tourDate;
+    }
+
+    public IntegerProperty tourDurationProperty() {
+        return tourDuration;
     }
 
     /**
      * A getter for id values
      */
     public int getId() {
-        return id;
+        return id.get();
     }
 
     /**
      * A setter method for id values
      */
     public void setId(int id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     /**
      * A getter for tour date values
      */
     public String getTourDate() {
-        return tourDate;
+        return tourDate.get();
     }
 
     /**
      * A setter method for tour date values
      */
     public void setTourDate(String tourDate) {
-        this.tourDate = tourDate;
+        this.tourDate.set(tourDate);
     }
 
     /**
      * A getter for tour duration values
      */
     public int getTourDuration() {
-        return tourDuration;
+        return tourDuration.get();
     }
 
     /**
      * A setter method for tour duration values
      */
     public void setTourDuration(int tourDuration) {
-        this.tourDuration = tourDuration;
+        this.tourDuration.set(tourDuration);
     }
 
     /**
@@ -109,6 +115,6 @@ public class GCUTour {
      */
     @Override
     public String toString() {
-        return "ID: " + Integer.toString(id) + " Tour Date: " + tourDate + " Duration: " + tourDuration + "\nDestinations: " + destinationsVisited;
+        return "ID: " + id.get() + " Tour Date: " + tourDate.get() + " Duration: " + tourDuration.get() + "\nDestinations: " + destinationsVisited;
     }
 }
